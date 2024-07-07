@@ -57,13 +57,13 @@ namespace BookHub
             this.Width = Width;
             this.Height = Height;
         }
-
+        //Додавање на форма
         public void AddShape(Shape s)
         {
             Shapes.Add(s);
             CounterOfShapes++;
         }
-
+        //Додавање на точка за формирање на полигон
         public void AddPointToPolygon(Point p, Color color)
         {
             CurrentPolygon.AddPointToPolygon(p, color);
@@ -74,7 +74,7 @@ namespace BookHub
                 CounterOfShapes++;
             }
         }
-
+        //Додавање на точки за формирање на линија
         public void AddPointToLine(Point point)
         {
             if (!LastPoint.IsEmpty)
@@ -88,12 +88,12 @@ namespace BookHub
                 LastPoint = point;
             }
         }
-
+        //Земање на тековната позиција на курсорот 
         public void UpdateCursor(Point p)
         {
             CurrentPolygon.UpdateCursor(p);
         }
-
+        //Метод кој се користи за цртање на формите со помош на Pen класата
         public void Draw(Graphics g)
         {
             foreach (var shape in Shapes)
@@ -120,7 +120,7 @@ namespace BookHub
                 g.DrawLine(p, new Point(Cursor.X, 0), new Point(Cursor.X, Height));
             }
         }
-
+        //Метод кој овозможува промена на формата со која ќе цртате
         public void SelectShape(Point point)
         {
             foreach (var shape in Shapes)
@@ -141,7 +141,7 @@ namespace BookHub
                 }
             }
         }
-
+        //Метод кој се користи за ставање на Stack линии кои подоцна можеме да ги вратиме на панелот за цртање 
         public void LineUndo()
         {
             if (Lines.Count > 0)
@@ -159,7 +159,7 @@ namespace BookHub
                 }
             }
         }
-
+        //Метод кој се користи за вадење од Stack линии кои предходно сме ги ставиле со помош на методот LineUndo()
         public void LineRedo()
         {
             if (LineUndoRedo.Count > 0)
@@ -169,7 +169,7 @@ namespace BookHub
                 LastPoint = l.Right;
             }
         }
-
+        //Метод кој се користи за ставање на Stack форми кои подоцна можеме да ги вратиме на панелот за цртање 
         public void ShapeUndo()
         {
             if (Shapes.Count > 0)
@@ -179,7 +179,7 @@ namespace BookHub
                 Shapes.RemoveAt(Shapes.Count - 1);
             }
         }
-
+        //Метод кој се користи за вадење од Stack форми кои предходно сме ги ставиле со помош на методот ShapeUndo()
         public void ShapeRedo()
         {
             if (ShapesUndoRedo.Count > 0)
@@ -188,6 +188,7 @@ namespace BookHub
                 Shapes.Add(s);
             }
         }
+        //Метод кој се користи за ставање на Stack полигони кои подоцна можеме да ги вратиме на панелот за цртање 
         public void PolygonUndo()
         {
             if (Polygons.Count > 0)
@@ -197,7 +198,7 @@ namespace BookHub
                 Polygons.RemoveAt(Polygons.Count - 1);
             }
         }
-
+        //Метод кој се користи за вадење од Stack полигони кои предходно сме ги ставиле со помош на методот PolygonUndo()
         public void PolygonRedo()
         {
             if (PolygonsUndoRedo.Count > 0)

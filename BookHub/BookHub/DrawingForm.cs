@@ -35,11 +35,12 @@ namespace BookHub
 
             lblWarning.Text = "If you prefer the form to be in a color other than white,\nselect your desired color before drawing the form.";
 
+            
             myPanel = pnlDraw;
             this.Controls.Add(myPanel);
             EnableDoubleBuffering(pnlDraw);
         }
-
+        //Метод кој овозможува дупло баферирање на панелот за подобра визуелизација на формите кои се цртаат
         private void EnableDoubleBuffering(Panel panel)
         {
             typeof(Panel).InvokeMember("SetStyle",
@@ -58,7 +59,7 @@ namespace BookHub
                 BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.InvokeMethod,
                 null, panel, null);
         }
-
+        //Копче со кое се стартува играта и се генерира наслов
         private void btnStart_Click(object sender, EventArgs e)
         {
             timer1.Start();
@@ -69,7 +70,7 @@ namespace BookHub
                 btnStart.Enabled = false;
             }
         }
-
+        //Метод за тајмер кој го управува течењето на времето на формата
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (TimeLeft == 0)
@@ -90,7 +91,7 @@ namespace BookHub
                 pbTimeLeft.Value = (int)(100.0 * (TimeLeft / 300.0));
             }
         }
-
+        //Копче со кое предвремено се завржува играта
         private void btnEnd_Click(object sender, EventArgs e)
         {
             timer1.Stop();
@@ -104,7 +105,7 @@ namespace BookHub
             }
             this.Close();
         }
-
+        //Додавање на правилата за игрта во менито каде со клик на GameRules ќе може да се видат
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string message = "Game Objective\n\n" +
@@ -119,7 +120,7 @@ namespace BookHub
 
             MessageBox.Show(message, "Game Rules", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
-
+        //Метод во кој се повикуваат методите за ShapeUndo(), LineUndo(), PolygonUndo() во зависност од тоа кој вид на формта треба привремено да се одстрани од панелот
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Scene.ShapeTypes.Count > 0)
@@ -145,7 +146,7 @@ namespace BookHub
             }
             pnlDraw.Invalidate();
         }
-
+        //Враќање на формите на панелот
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Scene.ShapeTypesRedo.Count > 0)
@@ -172,7 +173,7 @@ namespace BookHub
             }
             pnlDraw.Invalidate();
         }
-
+        //Избирање на соодветна боја за цртање на формите 
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
@@ -191,7 +192,7 @@ namespace BookHub
         {
 
         }
-
+        //Избирање на формата CIRCLE
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             circleToolStripMenuItem.Checked = true;
@@ -202,7 +203,7 @@ namespace BookHub
             triangleToolStripMenuItem.Checked = false;
             ShapeType = "CIRCLE";
         }
-
+        //Избирање на формата SQUARE
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
             circleToolStripMenuItem.Checked = false;
@@ -213,7 +214,7 @@ namespace BookHub
             triangleToolStripMenuItem.Checked = false;
             ShapeType = "SQUARE";
         }
-
+        //Избирање на формата RECTANGLE
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             circleToolStripMenuItem.Checked = false;
@@ -224,7 +225,7 @@ namespace BookHub
             triangleToolStripMenuItem.Checked = false;
             ShapeType = "RECTANGLE";
         }
-
+        //Избирање на формата LINE
         private void lineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             circleToolStripMenuItem.Checked = false;
@@ -235,7 +236,7 @@ namespace BookHub
             triangleToolStripMenuItem.Checked = false;
             ShapeType = "LINE";
         }
-
+        //Избирање на формата POLYGON
         private void polygonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             circleToolStripMenuItem.Checked = false;
@@ -246,7 +247,7 @@ namespace BookHub
             triangleToolStripMenuItem.Checked = false;
             ShapeType = "POLYGON";
         }
-
+        //Избирање на формата TRIANGLE
         private void triangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             circleToolStripMenuItem.Checked = false;
@@ -267,7 +268,7 @@ namespace BookHub
         {
 
         }
-
+        //Избирање на големината на формата 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             toolStripMenuItem2.Checked = true;
@@ -277,7 +278,7 @@ namespace BookHub
             toolStripMenuItem6.Checked = false;
             Scene.Size = Convert.ToInt32(toolStripMenuItem2.Text);
         }
-
+        //Избирање на големината на формата 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             toolStripMenuItem2.Checked = false;
@@ -287,7 +288,7 @@ namespace BookHub
             toolStripMenuItem6.Checked = false;
             Scene.Size = Convert.ToInt32(toolStripMenuItem3.Text);
         }
-
+        //Избирање на големината на формата 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             toolStripMenuItem2.Checked = false;
@@ -297,7 +298,7 @@ namespace BookHub
             toolStripMenuItem6.Checked = false;
             Scene.Size = Convert.ToInt32(toolStripMenuItem4.Text);
         }
-
+        //Избирање на големината на формата 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             toolStripMenuItem2.Checked = false;
@@ -307,7 +308,7 @@ namespace BookHub
             toolStripMenuItem6.Checked = false;
             Scene.Size = Convert.ToInt32(toolStripMenuItem5.Text);
         }
-
+        //Избирање на големината на формата 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
             toolStripMenuItem2.Checked = false;
@@ -317,7 +318,7 @@ namespace BookHub
             toolStripMenuItem6.Checked = true;
             Scene.Size = Convert.ToInt32(toolStripMenuItem6.Text);
         }
-
+        //Избирање на големината на формата 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             if (toolStripTextBox1.Text.Length > 0)
@@ -335,7 +336,7 @@ namespace BookHub
                 toolStripMenuItem4.Checked = true;
             }
         }
-
+        //Избирање на дебелинта на линијата за цртање  
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             toolStripMenuItem7.Checked = true;
@@ -345,7 +346,7 @@ namespace BookHub
             toolStripMenuItem11.Checked = false;
             Scene.Thickness = Convert.ToInt32(toolStripMenuItem7.Text);
         }
-
+        //Избирање на дебелинта на линијата за цртање  
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
             toolStripMenuItem7.Checked = false;
@@ -355,7 +356,7 @@ namespace BookHub
             toolStripMenuItem11.Checked = false;
             Scene.Thickness = Convert.ToInt32(toolStripMenuItem8.Text);
         }
-
+        //Избирање на дебелинта на линијата за цртање  
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
             toolStripMenuItem7.Checked = false;
@@ -365,7 +366,7 @@ namespace BookHub
             toolStripMenuItem11.Checked = false;
             Scene.Thickness = Convert.ToInt32(toolStripMenuItem9.Text);
         }
-
+        //Избирање на дебелинта на линијата за цртање  
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
             toolStripMenuItem7.Checked = false;
@@ -375,7 +376,7 @@ namespace BookHub
             toolStripMenuItem11.Checked = false;
             Scene.Thickness = Convert.ToInt32(toolStripMenuItem10.Text);
         }
-
+        //Избирање на дебелинта на линијата за цртање  
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
             toolStripMenuItem7.Checked = false;
@@ -386,7 +387,7 @@ namespace BookHub
             Scene.Thickness = Convert.ToInt32(toolStripMenuItem11.Text);
 
         }
-
+        //Избирање на дебелинта на линијата за цртање  
         private void toolStripTextBox2_TextChanged(object sender, EventArgs e)
         {
             if (toolStripTextBox2.Text.Length > 0)
@@ -404,12 +405,12 @@ namespace BookHub
                 toolStripMenuItem9.Checked = true;
             }
         }
-
+        //Метод кој овозможува цртање на форми на панелот и Формта
         private void pnlDraw_Paint(object sender, PaintEventArgs e)
         {
             Scene.Draw(e.Graphics);
         }
-
+        //Метод кој се користи за цртање на формите со помош на лев клик на маусот
         private void pnlDraw_MouseClick(object sender, MouseEventArgs e)
         {
             if (timer1.Enabled)
@@ -456,14 +457,14 @@ namespace BookHub
                 pnlDraw.Invalidate();
             }
         }
-
+        //Метод кој ја зема тековната локација на курсорот 
         private void pnlDraw_MouseMove(object sender, MouseEventArgs e)
         {
             Scene.UpdateCursor(e.Location);
             Scene.Cursor = e.Location;
             pnlDraw.Invalidate();
         }
-
+        //Зачувување на формата
         private void SaveScene(string path)
         {
             FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
@@ -472,7 +473,7 @@ namespace BookHub
 
             fs.Close();
         }
-
+        //Отворање на веќе зачувана форма
         private void OpenScene(string path)
         {
             FileStream fs = new FileStream(path, FileMode.Open);
@@ -481,7 +482,7 @@ namespace BookHub
 
             fs.Close();
         }
-
+        //Отворање на нова форма и restart на играта
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Scene = new Scene();
@@ -531,7 +532,7 @@ namespace BookHub
         {
             this.Close();
         }
-
+        //Генерирање на наслов за книгата која треба да се нацрата нејзината корица
         private string GenerateBookTitle()
         {
             string[] adjectives = {
