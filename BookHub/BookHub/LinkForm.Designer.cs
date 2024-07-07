@@ -63,7 +63,6 @@
             this.Controls.Add(this.linkLabel1);
             this.Name = "LinkForm";
             this.Text = "Link to the image";
-            this.Load += new System.EventHandler(this.LinkForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

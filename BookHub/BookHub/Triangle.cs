@@ -14,6 +14,7 @@ namespace BookHub
         {
         }
 
+        //исцртување на триаголник
         public override void Draw(Graphics g)
         {
             Point[] points = new Point[3];
@@ -23,16 +24,13 @@ namespace BookHub
             points[1] = new Point(Location.X - Size, Location.Y + (int)(height / 2));
             points[2] = new Point(Location.X + Size, Location.Y + (int)(height / 2));
 
+            //исцртување на обиколката
             Pen p = new Pen(Color.Black, Thickness);
             g.DrawPolygon(p, points);
 
+            //боење на триаголникот
             Brush brush = new SolidBrush(this.Color);
             g.FillPolygon(brush, points);
-        }
-
-        public override bool SelectShape(Point point)
-        {
-            throw new NotImplementedException();
         }
     }
 }

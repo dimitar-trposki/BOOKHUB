@@ -14,20 +14,18 @@ namespace BookHub
         {
         }
 
+        //исцртување на круг
         public override void Draw(Graphics g)
         {
+            //исцртување на обиколка
             Pen p = new Pen(Color.Black, Thickness);
             g.DrawEllipse(p, this.Location.X - this.Size, this.Location.Y - this.Size, 2 * this.Size, 2 * this.Size);
             p.Dispose();
 
+            //боење на кругот
             Brush brush = new SolidBrush(this.Color);
             g.FillEllipse(brush, this.Location.X - this.Size, this.Location.Y - this.Size, 2 * this.Size, 2 * this.Size);
             brush.Dispose();
-        }
-
-        public override bool SelectShape(Point point)
-        {
-            return Math.Sqrt(Math.Pow(this.Location.X - point.X, 2) + Math.Pow(this.Location.Y - point.Y, 2)) <= this.Size;
         }
     }
 }

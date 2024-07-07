@@ -18,6 +18,7 @@ namespace BookHub
         {
             InitializeComponent();
 
+            //иницијализација на DataGridView и сцената за приказ на книги
             dgvBooks.BackgroundColor = Color.Beige;
 
             SceneLibrary = new SceneLibrary();
@@ -27,6 +28,7 @@ namespace BookHub
             dgvBooks.Dock = DockStyle.Fill;
         }
 
+        //приказ на книгите при првото уклучување на формата
         private void LoadBooks()
         {
             List<Book> booksToShow = SceneLibrary.ModernLiterature.ToList();
@@ -80,8 +82,20 @@ namespace BookHub
             dgvBooks.CellContentClick += dgvBooks_CellContentClick;
         }
 
+        //приказ на книгите за соодветниот жанр
+        private void LoadBooks(string genre)
+        {
+            List<Book> booksToShow = SceneLibrary.returnList(genre);
+            dgvBooks.AutoGenerateColumns = false;
+
+            BindingSource source = new BindingSource();
+            source.DataSource = booksToShow;
+            dgvBooks.DataSource = source;
+        }
+
         private void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //акции при клик на копчето Buy
             if (e.RowIndex >= 0 && e.ColumnIndex == dgvBooks.Columns["Buy"].Index)
             {
                 Book selectedBook = dgvBooks.Rows[e.RowIndex].DataBoundItem as Book;
@@ -93,6 +107,7 @@ namespace BookHub
                     dgvBooks.Refresh();
                 }
             }
+            //акции при клик на копчето Return
             else if (e.RowIndex >= 0 && e.ColumnIndex == dgvBooks.Columns["Return"].Index)
             {
                 Book selectedBook = dgvBooks.Rows[e.RowIndex].DataBoundItem as Book;
@@ -104,6 +119,7 @@ namespace BookHub
                     dgvBooks.Refresh();
                 }
             }
+            //акции при клик на копчето Image
             else if (e.RowIndex >= 0 && e.ColumnIndex == dgvBooks.Columns["Image"].Index)
             {
                 Book selectedBook = dgvBooks.Rows[e.RowIndex].DataBoundItem as Book;
@@ -113,28 +129,15 @@ namespace BookHub
             }
         }
 
-        private void LoadBooks(string genre)
-        {
-            List<Book> booksToShow = SceneLibrary.returnList(genre);
-            dgvBooks.AutoGenerateColumns = false;
-
-            BindingSource source = new BindingSource();
-            source.DataSource = booksToShow;
-            dgvBooks.DataSource = source;
-
-        }
-
+        //отворање на формата за играње на играта
         private void btnGame_Click(object sender, EventArgs e)
         {
             DrawingForm drawingForm = new DrawingForm();
             drawingForm.ShowDialog();
         }
 
-        private void LibraryForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //приказ на книгите со клик на соодветниот жанр во менито
+        //-------------------------------------------------------------------------------
         private void modernLiteratureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SceneLibrary = new SceneLibrary();
@@ -278,5 +281,6 @@ namespace BookHub
             SceneLibrary = new SceneLibrary();
             LoadBooks("JournalMagazine");
         }
+        //-------------------------------------------------------------------------------
     }
 }

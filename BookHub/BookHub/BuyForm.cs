@@ -26,6 +26,7 @@ namespace BookHub
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //намалување на количината на соодветната книга
             if (Book.Quantity >= Convert.ToInt32(tbQuantity.Text))
             {
                 Book.Quantity -= Convert.ToInt32(tbQuantity.Text);
@@ -38,6 +39,11 @@ namespace BookHub
                 this.DialogResult = DialogResult.Cancel;
                 MessageBox.Show("Not enough books.\nQuantity: " + Book.Quantity + ".\nPlease add different value for quantity.");
             }
+        }
+
+        private void BuyForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

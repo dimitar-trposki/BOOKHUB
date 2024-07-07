@@ -129,7 +129,6 @@
             this.MinimumSize = new System.Drawing.Size(1280, 719);
             this.Name = "MenuForm";
             this.Text = "BookHub";
-            this.Load += new System.EventHandler(this.MenuForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

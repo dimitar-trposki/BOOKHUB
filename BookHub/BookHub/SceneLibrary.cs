@@ -33,6 +33,7 @@ namespace BookHub
         public List<Book> EncyclopediaLexicon { get; set; }
         public List<Book> JournalMagazine { get; set; }
 
+        //иницијализација на листите со соодветните книги
         public SceneLibrary()
         {
             ModernLiterature = new List<Book>
@@ -518,6 +519,7 @@ namespace BookHub
             };
         }
 
+        //метод кој ја враќа листата на книги за соодветниот жанр
         public List<Book> returnList(string genre)
         {
             switch (genre)

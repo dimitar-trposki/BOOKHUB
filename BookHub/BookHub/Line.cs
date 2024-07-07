@@ -23,6 +23,7 @@ namespace BookHub
             Thickness = thickness;
         }
 
+        //исцртување на линија
         public void Draw(Graphics g)
         {
             if (Color == Color.White)

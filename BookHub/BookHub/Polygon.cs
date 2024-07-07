@@ -23,6 +23,7 @@ namespace BookHub
             Thickness = thickness;
         }
 
+        //додавање на точка на полигонот
         public void AddPointToPolygon(Point p, Color color)
         {
             IsCloseToStart = NearStart();
@@ -39,12 +40,14 @@ namespace BookHub
             this.Color = color;
         }
 
+        //ажурирање на курсорот
         public void UpdateCursor(Point p)
         {
             Cursor = p;
             IsCloseToStart = NearStart();
         }
 
+        //проверка дали курсорот се наоѓа во близина на почетната точка
         public bool NearStart()
         {
             if (Points.Count < 3)
@@ -56,6 +59,7 @@ namespace BookHub
             return Distance <= 5;
         }
 
+        //исцртување на полигонот
         public void Draw(Graphics g)
         {
             Pen pen = new Pen(Color.Black, Thickness);
@@ -66,17 +70,20 @@ namespace BookHub
             if (Points.Count >= 2)
             {
                 g.DrawLines(pen, Points.ToArray());
+                //исцртување на мал круг околу почетната точка при hover со маусот
                 if (IsCloseToStart)
                 {
                     Point firstPoint = Points[0];
                     g.DrawEllipse(dashedPen, firstPoint.X - 5, firstPoint.Y - 5, 10, 10);
                 }
+                //боење на полигонот
                 if (IsClosed)
                 {
                     g.FillPolygon(brush, Points.ToArray());
                 }
             }
 
+            //исцртување на привремена испрекината линија со движење на курсорот
             if (Points.Count > 0)
             {
                 Point lastPoint = Points[Points.Count - 1];

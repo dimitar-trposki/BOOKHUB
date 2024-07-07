@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookHub
 {
+    //класа за чување на податоци за секоја книга
     public class Book
     {
         public string ImageURL { get; set; }

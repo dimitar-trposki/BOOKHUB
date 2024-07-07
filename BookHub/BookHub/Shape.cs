@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookHub
 {
+    //апстрактна класа за креирање на форми
     [Serializable]
     public abstract class Shape
     {
@@ -15,8 +16,6 @@ namespace BookHub
         public int Size { get; set; }
         public int Thickness { get; set; }
         public abstract void Draw(Graphics g);
-        public abstract bool SelectShape(Point point);
-        public bool IsSelected { get; set; } = false;
 
         public Shape(Color color, Point location, int size, int thickness)
         {

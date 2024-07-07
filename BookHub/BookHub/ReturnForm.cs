@@ -21,6 +21,7 @@ namespace BookHub
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            //додавање на количина за соодветна книга
             if (tbName.Text.Length > 0 && tbAddress.Text.Length > 0 && tbNumber.Text.Length > 0 && tbQuantity.Text.Length > 0)
             {
                 Book.Quantity += Convert.ToInt32(tbQuantity.Text);

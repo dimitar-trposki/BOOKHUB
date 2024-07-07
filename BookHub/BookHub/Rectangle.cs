@@ -14,20 +14,18 @@ namespace BookHub
         {
         }
 
+        //исцртување на правоаголникот
         public override void Draw(Graphics g)
         {
+            //исцртување на обиколката
             Pen p = new Pen(Color.Black, Thickness);
             g.DrawRectangle(p, this.Location.X - (Size * 2) / 2, this.Location.Y - Size / 2, this.Size * 2, this.Size);
             p.Dispose();
 
+            //боење на правоаголникот
             Brush brush = new SolidBrush(this.Color);
             g.FillRectangle(brush, this.Location.X - (Size * 2) / 2, this.Location.Y - Size / 2, this.Size * 2, this.Size);
             brush.Dispose();
-        }
-
-        public override bool SelectShape(Point point)
-        {
-            throw new NotImplementedException();
         }
     }
 }

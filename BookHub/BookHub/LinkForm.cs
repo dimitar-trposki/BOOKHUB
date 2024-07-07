@@ -15,15 +15,12 @@ namespace BookHub
         public LinkForm(Book book)
         {
             InitializeComponent();
+            //додавање на линк кон сликата во формата
             linkLabel1.Text = book.Title;
             linkLabel1.Links.Add(0, linkLabel1.Text.Length, book.ImageURL);
         }
 
-        private void LinkForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //акција при клик на линкот
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(e.Link.LinkData as string);

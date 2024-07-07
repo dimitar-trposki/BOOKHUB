@@ -18,28 +18,27 @@ namespace BookHub
             this.DoubleBuffered = true;
         }
 
+        //клик на копчето за приказ на формата за игра
         private void btnGame_Click(object sender, EventArgs e)
         {
             DrawingForm drawingForm = new DrawingForm();
             drawingForm.ShowDialog();
         }
 
+        //клик на копчето за приказ на формата за библиотека
         private void btnLibrary_Click(object sender, EventArgs e)
         {
             LibraryForm libraryForm = new LibraryForm();
             libraryForm.ShowDialog();
         }
 
-        private void MenuForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //копче за затворање на формата
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //приказ на информации за нас и апликацијата
         private void btnAboutUS_Click(object sender, EventArgs e)
         {
             string message = "Welcome to our quaint bookstore where we enhance the joy of reading with a delightful twist—by integrating a small game into our online library experience. Within our library, you'll discover a vast array of genres and a rich selection of books within each. Upon launching our application, you're presented with a choice: indulge in entertainment or search for the next addition to your home library shelves.\n\n" +
