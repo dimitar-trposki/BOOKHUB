@@ -102,7 +102,6 @@
             this.label6.Size = new System.Drawing.Size(111, 34);
             this.label6.TabIndex = 12;
             this.label6.Text = "Address";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // tbAddress
             // 
@@ -127,6 +126,7 @@
             this.tbQuantity.Name = "tbQuantity";
             this.tbQuantity.Size = new System.Drawing.Size(363, 36);
             this.tbQuantity.TabIndex = 15;
+            this.tbQuantity.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
             // 
             // BuyForm
             // 
@@ -145,7 +145,6 @@
             this.Controls.Add(this.lblName);
             this.Name = "BuyForm";
             this.Text = "Buy";
-            this.Load += new System.EventHandler(this.BuyForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

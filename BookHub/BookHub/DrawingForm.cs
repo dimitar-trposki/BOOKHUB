@@ -444,10 +444,6 @@ namespace BookHub
                         Scene.ShapeTypes.Push("Polygon");
                     }
                 }
-                else
-                {
-                    Scene.SelectShape(e.Location);
-                }
 
                 lblNumShapes.Text = "Total number of shapes used: " + Scene.CounterOfShapes;
                 pnlDraw.Invalidate();

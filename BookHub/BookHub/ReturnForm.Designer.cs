@@ -115,6 +115,7 @@
             this.tbQuantity.Name = "tbQuantity";
             this.tbQuantity.Size = new System.Drawing.Size(363, 36);
             this.tbQuantity.TabIndex = 18;
+            this.tbQuantity.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
             // 
             // btnReturn
             // 

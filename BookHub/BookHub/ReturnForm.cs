@@ -17,6 +17,7 @@ namespace BookHub
         {
             InitializeComponent();
             this.Book = book;
+            btnReturn.Enabled = false;
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -29,6 +30,11 @@ namespace BookHub
                 MessageBox.Show("Thank you for your return.\nSee you next time.");
                 this.Close();
             }
+        }
+
+        private void tbQuantity_TextChanged(object sender, EventArgs e)
+        {
+            btnReturn.Enabled = true;
         }
     }
 }
